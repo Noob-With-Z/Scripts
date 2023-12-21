@@ -5,14 +5,39 @@ local Tab = Window:MakeTab({
 	Icon = "user",
 	PremiumOnly = false
 })
-Tab:AddButton({
-	Name = "Button!",
-	Callback = function()
-      		print("button pressed")
-  	end    
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+
+Tab:AddToggle({
+	Name = "Auto-Farm",
+	Default = false,
+	Callback = function(IsAutoFarming)
+		local Coin = workspace:WaitForChild("Coin")
+		local player = Players.LocalPlayer
+
+		if IsAutoFarming then
+			-- Código a ser executado quando a toggle está ligada
+			local humanoid = player.Character:WaitForChild("Humanoid")
+			local endPosition = Coin.Position
+
+			local tweenInfo = TweenInfo.new(
+				1, -- Duração da animação em segundos
+				Enum.EasingStyle.Linear, -- Estilo de interpolação
+				Enum.EasingDirection.Out -- Direção da interpolação
+			)
+
+			-- Criando a Tween
+			local tween = TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {Position = endPosition})
+
+			-- Iniciando a Tween
+			while wait(tween) and IsAutoFarming do
+				tween:Play()
+				end
+		else
+			-- Código a ser executado quando a toggle está desligada
+			-- (pode ser usado para interromper ou reverter a animação, se necessário)
+			end
+		end
 })
 
---[[
-Name = <string> - The name of the button.
-Callback = <function> - The function of the button.
-]]

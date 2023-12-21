@@ -1,0 +1,7 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Noob-With-Z/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "NoobZ | Universal", HidePremium = false, SaveConfig = true, ConfigFolder = "Classic Chess", IntroIcon= "nerd", IntroText = "By NoobZ"})
+local Tab = Window:MakeTab({
+	Name = "LocalPlayer",
+	Icon = "user",
+	PremiumOnly = false
+})

@@ -9,6 +9,8 @@ local Tab = Window:MakeTab({
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 
+local IsTweening = false -- Variável para controlar se a Tween está em execução
+
 Tab:AddToggle({
 	Name = "Auto-Farm",
 	Default = false,
@@ -30,14 +32,20 @@ Tab:AddToggle({
 			-- Criando a Tween
 			local tween = TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {Position = endPosition})
 
-			-- Iniciando a Tween
-			while wait(tween) and IsAutoFarming do
+			-- Definindo o evento de conclusão da Tween
+			tween.Completed:Connect(function()
+				IsTweening = false -- Quando a Tween termina, marcamos como concluída
+			end)
+
+			-- Iniciando a Tween apenas se não estiver já em execução
+			if not IsTweening then
+				IsTweening = true
 				tween:Play()
-				end
+			end
 		else
 			-- Código a ser executado quando a toggle está desligada
 			-- (pode ser usado para interromper ou reverter a animação, se necessário)
-			end
+			IsTweening = false -- Marcar como concluída quando a toggle é desligada
 		end
+	end
 })
-

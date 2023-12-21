@@ -1,4 +1,4 @@
-warn("Credits To https://github.com/EdgeIY/infiniteyield/master/source")
+Print("Credits To https://github.com/EdgeIY/infiniteyield/master/source")
 
 if IY_LOADED and not _G.IY_DEBUG == true then
 	-- error("Infinite Yield is already running!", 0)

@@ -12163,9 +12163,11 @@ addcmd('removecmd',{'deletecmd'},function(args, speaker)
 end)
 
 addcmd('GameId',{'GID'},function(args, speaker)
-	Title.Text = game.Id
-	wait(5)
-	Title.Text = "NoobZ IY v".. CurrentVersion
+a = Instance.new("Message")
+a.Text = game.Id
+a.Parent = COREGUI
+wait(5)
+a:Destroy()
 end)
 
 if IsOnMobile then

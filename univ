@@ -39,7 +39,7 @@ TextLabel.Selectable = true
 TextLabel.Size = UDim2.new(0, 557, 0, 29)
 TextLabel.Visible = false
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "  NoobZ | Universal"
+TextLabel.Text = "  NoobZ | Murder Mystery 2"
 TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
@@ -273,25 +273,6 @@ end
 	local char = plr.Character
 	local human = char.Humanoid
 	--------------------
-	-- TO BYPASS LOCALS --
-	local abv = script
-	local bvb = abv.Parent
-	local as = script.Parent.visible
-	local ab = script.Parent.CloseMin
-	local bc = script.Parent.PName
-	local abc = script.Parent.Move
-	
-	wait(10)
-	-- LOOP BYPASS SCREENGUI --
-	while wait(.1) do
-		abv.Name = randomString()
-		bvb.Name = randomString()
-		as.Name = randomString()
-		ab.Name = randomString()
-		bc.Name = randomString()
-		abc.Name = randomString()
-	end
-
 
 	local aop = script.Parent.TextLabel
 	local bop = script.Parent.ImageButton

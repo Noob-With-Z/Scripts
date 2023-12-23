@@ -274,8 +274,8 @@ end
 	local human = char.Humanoid
 	--------------------
 
-	local aop = script.Parent.TextLabel
-	local bop = script.Parent.ImageButton
+	local aop = TextLabel
+	local bop = ImageButton
 	
 	while wait(.1) do
 		if aop.Visible == true then

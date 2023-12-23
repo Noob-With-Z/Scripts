@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "NoobZ | Universal", HidePremium = false, SaveConfig = true, ConfigFolder = "Classic Chess", IntroIcon= "rbxassetid://15596611355", IntroText = "By NoobZ"})
-local Tab = Window:MakeTab({
+local PTab = Window:MakeTab({
 	Name = "LocalPlayer",
 	Icon = "rbxassetid://7743875962",
 	PremiumOnly = false
@@ -11,9 +11,9 @@ local Players = game:GetService("Players")
 
 local IsTweening = false -- Variável para controlar se a Tween está em execução
 
-Tab:AddToggle({
+PTab:AddToggle({
 	Name = "Auto-Farm",
-	Default = false,
+	Default = true,
 	Callback = function(IsAutoFarming)
 		local Coin = workspace:WaitForChild("Coin")
 		local player = Players.LocalPlayer

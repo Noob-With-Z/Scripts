@@ -1,51 +1,7 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "NoobZ | Universal", HidePremium = false, SaveConfig = true, ConfigFolder = "Classic Chess", IntroIcon= "rbxassetid://15596611355", IntroText = "By NoobZ"})
-local PTab = Window:MakeTab({
-	Name = "LocalPlayer",
-	Icon = "rbxassetid://7743875962",
-	PremiumOnly = false
-})
+--[[
+In Development...
 
-local TweenService = game:GetService("TweenService")
-local Players = game:GetService("Players")
+this script can take time to stay 100% ready, why the hub it's mine and i need a time configure toggles, functions and others somethings
 
-local IsTweening = false -- Variável para controlar se a Tween está em execução
-
-PTab:AddToggle({
-	Name = "Auto-Farm",
-	Default = true,
-	Callback = function(IsAutoFarming)
-		local Coin = workspace:WaitForChild("Coin")
-		local player = Players.LocalPlayer
-
-		if IsAutoFarming then
-			-- Código a ser executado quando a toggle está ligada
-			local humanoid = player.Character:WaitForChild("Humanoid")
-			local endPosition = Coin.Position
-
-			local tweenInfo = TweenInfo.new(
-				1, -- Duração da animação em segundos
-				Enum.EasingStyle.Linear, -- Estilo de interpolação
-				Enum.EasingDirection.Out -- Direção da interpolação
-			)
-
-			-- Criando a Tween
-			local tween = TweenService:Create(player.Character.HumanoidRootPart, tweenInfo, {Position = endPosition})
-
-			-- Definindo o evento de conclusão da Tween
-			tween.Completed:Connect(function()
-				IsTweening = false -- Quando a Tween termina, marcamos como concluída
-			end)
-
-			-- Iniciando a Tween apenas se não estiver já em execução
-			if not IsTweening then
-				IsTweening = true
-				tween:Play()
-			end
-		else
-			-- Código a ser executado quando a toggle está desligada
-			-- (pode ser usado para interromper ou reverter a animação, se necessário)
-			IsTweening = false -- Marcar como concluída quando a toggle é desligada
-		end
-	end
-})
+ps:This is not a same Orion version, all things is totally hand, without commands type Tab:CreateToggle() for these things i need take a time and configure all in a unique script.
+]]

@@ -560,6 +560,7 @@ STab:AddButton({
 	Time = 5
 	})
     	end
+end)
 })
 
 while wait(.5) do

@@ -328,7 +328,7 @@ RATab:AddButton({
 	Name = "RGB Oppression",
 	Callback = function()
       		local args = {
-          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("OpressionRGB")
+          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("OppressionRGB")
           }
           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
   	end    
@@ -367,7 +367,7 @@ PATab:AddButton({
 })
 
 PATab:AddButton({
-	Name = "Im Peach",
+	Name = "Impeach",
 	Callback = function()
       		local args = {
           [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Impeach")

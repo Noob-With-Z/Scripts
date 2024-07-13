@@ -520,7 +520,7 @@ if game.PlaceId == 18157528052 then
 
 	local STab = Window:MakeTab({
 		Name = "Server",
-		Icon = "rbxassetid://7734068495",
+		Icon = "rbxassetid://4483345998",
 		PremiumOnly = false
 	})
 
@@ -573,7 +573,7 @@ else
 
 	local GTab = Window:MakeTab({
 		Name = "Game",
-		Icon = "rbxassetid://7734068495",
+		Icon = "rbxassetid://4483345998",
 		PremiumOnly = false
 	})
 	GTab:AddLabel("ops!")

@@ -534,34 +534,29 @@ if game.PlaceId == 18157528052 then
 	STab:AddButton({
 		Name = "Server Hop",
 		Callback = function()
-			-- Server Hop Script From Infinite Yield FE (https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source)
-			if httprequest then
-				local PlaceId, JobId = game.PlaceId, game.JobId
-				local servers = {}
-				local req = httprequest({Url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true", PlaceId)})
-				local body = game:GetService("HttpService"):JSONDecode(req.Body)
+local Player = game.Players.LocalPlayer    
+local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
 
-				if body and body.data then
-					for i, v in next, body.data do
-						if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= JobId then
-							table.insert(servers, 1, v.id)
-						end
-					end
-				end
+local _place,_id = game.PlaceId, game.JobId
+local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
+function ListServers(cursor)
+   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+   return Http:JSONDecode(Raw)
+end
 
-				if #servers > 0 then
-					game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
-				else
-					return OrionLib:MakeNotification({Name = "Error", Content = "Couldn't find a server.", Image = "rbxassetid://4483345998", Time = 5})
-				end
-			else
-				OrionLib:MakeNotification({
-					Name = "Error",
-					Content = "Your exploit does not support this command (missing request)",
-					Image = "rbxassetid://4483345998",
-					Time = 5
-				})
-			end
+local Next; repeat
+   local Servers = ListServers(Next)
+   for i,v in next, Servers.data do
+       if v.playing < v.maxPlayers and v.id ~= _id then
+           local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
+           if s then break end
+       end
+   end
+   
+   Next = Servers.nextPageCursor
+until not Next
 		end
 	})
 

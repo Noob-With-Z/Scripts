@@ -258,7 +258,7 @@ RATab:AddButton({
 	Name = "RGB Overture: History",
 	Callback = function()
       		local args = {
-          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("HistoryRGB")
+          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("OvertureHistoryRGB")
           }
           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
   	end    

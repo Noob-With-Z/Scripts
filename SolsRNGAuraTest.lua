@@ -2,9 +2,9 @@
 if game.PlaceId == 18157528052 then
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "rbxassetid://7733954058"})
-	
+
 	local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-	
+
 	-- Normal Auras --
 
 	local ATab = Window:MakeTab({
@@ -534,29 +534,29 @@ if game.PlaceId == 18157528052 then
 	STab:AddButton({
 		Name = "Server Hop",
 		Callback = function()
-local Player = game.Players.LocalPlayer    
-local Http = game:GetService("HttpService")
-local TPS = game:GetService("TeleportService")
-local Api = "https://games.roblox.com/v1/games/"
+			local Player = game.Players.LocalPlayer    
+			local Http = game:GetService("HttpService")
+			local TPS = game:GetService("TeleportService")
+			local Api = "https://games.roblox.com/v1/games/"
 
-local _place,_id = game.PlaceId, game.JobId
-local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
-function ListServers(cursor)
-   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-   return Http:JSONDecode(Raw)
-end
+			local _place,_id = game.PlaceId, game.JobId
+			local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
+			function ListServers(cursor)
+				local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+				return Http:JSONDecode(Raw)
+			end
+			local PlaceId, JobId = game.PlaceId, game.JobId
+			local Next; repeat
+				local Servers = ListServers(Next)
+				for i,v in next, Servers.data do
+					if tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= JobId then
+						local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
+						if s then break end
+					end
+				end
 
-local Next; repeat
-   local Servers = ListServers(Next)
-   for i,v in next, Servers.data do
-       if v.playing < v.maxPlayers and v.id ~= _id then
-           local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
-           if s then break end
-       end
-   end
-   
-   Next = Servers.nextPageCursor
-until not Next
+				Next = Servers.nextPageCursor
+			until not Next
 		end
 	})
 

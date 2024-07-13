@@ -533,8 +533,9 @@ STab:AddButton({
 	Callback = function()
 	-- Server Hop Script From Infinite Yield FE (https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source)
         if httprequest then
+	local PlaceId, JobId = game.PlaceId, game.JobId
         local servers = {}
-        local req = httprequest({Url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true", 18157528052)})
+        local req = httprequest({Url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true", PlaceId)})
         local body = HttpService:JSONDecode(req.Body)
 
         if body and body.data then
@@ -546,7 +547,7 @@ STab:AddButton({
         end
 
         if #servers > 0 then
-            game:GetService("TeleportService"):TeleportToPlaceInstance(18157528052, servers[math.random(1, #servers)], game.Players.LocalPlayer)
+            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
         else
             return OrionLib:MakeNotification({Name = "Error", Content = "Couldn't find a server.", Image = "rbxassetid://4483345998", Time = 5})
         end

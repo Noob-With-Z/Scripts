@@ -1,17 +1,25 @@
+if game.PlaceId == 18157528052 then
+-- Anti AFK --
+local VirtualUser = cloneref(game:GetService("VirtualUser"))
+game.Players.LocalPlayer.Idled:Connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+--------------
+	
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-
-local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub"})
+local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "github"})
 
 -- Normal Auras --
 
 local ATab = Window:MakeTab({
 	Name = "Auras",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7734068495",
 	PremiumOnly = false
 })
 
 local Section = ATab:AddSection({
-	Name = "Fast Equip Normal Auras"
+	Name = "Equip Normal Auras"
 })
 
 ATab:AddButton({
@@ -380,7 +388,7 @@ PATab:AddButton({
 
 local ADTab = Window:MakeTab({
 	Name = "Admin Auras",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7743875503",
 	PremiumOnly = false
 })
 
@@ -475,7 +483,7 @@ ADTab:AddButton({
 
 local MTab = Window:MakeTab({
 	Name = "Misc Auras",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7733984995",
 	PremiumOnly = false
 })
 
@@ -503,7 +511,7 @@ MTab:AddButton({
 
 local UTab = Window:MakeTab({
 	Name = "Unequip Aura",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7734000129",
 	PremiumOnly = false
 })
 
@@ -513,3 +521,73 @@ UTab:AddButton({
           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraUnequipAll"):FireServer() 
   	end    
 })
+
+-- Server --
+
+local STab = Window:MakeTab({
+	Name = "Server",
+	Icon = "rbxassetid://7734068495",
+	PremiumOnly = false
+})
+
+local Section = STab:AddSection({
+	Name = "About The Server"
+})
+
+local plrc = STab:AddLabel("Players: 0/?")
+
+STab:AddButton({
+	Name = "Server Hop",
+	Callback = function()
+	-- Server Hop Script From Infinite Yield FE (https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source)
+        if httprequest then
+        local servers = {}
+        local req = httprequest({Url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true", 18157528052)})
+        local body = HttpService:JSONDecode(req.Body)
+
+        if body and body.data then
+            for i, v in next, body.data do
+                if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= JobId then
+                    table.insert(servers, 1, v.id)
+                end
+            end
+        end
+
+        if #servers > 0 then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(18157528052, servers[math.random(1, #servers)], game.Players.LocalPlayer)
+        else
+            return OrionLib:MakeNotification({Name = "Error", Content = "Couldn't find a server.", Image = "rbxassetid://4483345998", Time = 5})
+        end
+   	 else
+	OrionLib:MakeNotification({
+	Name = "Error",
+	Content = "Your exploit does not support this command (missing request)",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+	})
+    	end
+})
+
+while wait(.5) do
+plrc:Set("Players: "..#game:GetService("Players"):GetPlayers().."/"..game.Players.MaxPlayers)
+end
+else
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "NoobZ | Game Teleport", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "github"})
+	
+local GTab = Window:MakeTab({
+	Name = "Game",
+	Icon = "rbxassetid://7734068495",
+	PremiumOnly = false
+})
+GTab:AddLabel("ops!")
+GTab:AddLabel("This script didn't support this game!")
+GTab:AddLabel("You can teleport to the game supported with this button!")
+local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+GTab:AddButton({
+	Name = "Teleport To Supported Game",
+	Callback = function()
+	game:GetService("TeleportService"):Teleport(18157528052, game.Players.LocalPlayer)
+  	end    
+})
+end

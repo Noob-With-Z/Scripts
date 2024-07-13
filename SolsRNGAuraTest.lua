@@ -1,12 +1,4 @@
 if game.PlaceId == 18157528052 then
--- Anti AFK --
-local VirtualUser = cloneref(game:GetService("VirtualUser"))
-game.Players.LocalPlayer.Idled:Connect(function()
-VirtualUser:CaptureController()
-VirtualUser:ClickButton2(Vector2.new())
-end)
---------------
-	
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "github"})
 

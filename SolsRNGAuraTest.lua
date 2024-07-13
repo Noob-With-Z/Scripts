@@ -1,9 +1,10 @@
-
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Noob-With-Z/Scripts/main/SolsRNGAuraTest.lua"))()
 if game.PlaceId == 18157528052 then
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "rbxassetid://7733954058"})
-
+	
+	local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+	
 	-- Normal Auras --
 
 	local ATab = Window:MakeTab({
@@ -565,8 +566,8 @@ if game.PlaceId == 18157528052 then
 	})
 
 	while wait(.5) do
-	plrc:Set("Players: "..#game:GetService("Players"):GetPlayers().."/"..game.Players.MaxPlayers)
-end
+		plrc:Set("Players: "..#game:GetService("Players"):GetPlayers().."/"..game.Players.MaxPlayers)
+	end
 else
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Game Teleport", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "github"})
@@ -579,7 +580,6 @@ else
 	GTab:AddLabel("ops!")
 	GTab:AddLabel("This script didn't support this game!")
 	GTab:AddLabel("You can teleport to the game supported with this button!")
-	local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 	GTab:AddButton({
 		Name = "Teleport To Supported Game",
 		Callback = function()

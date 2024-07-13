@@ -432,10 +432,10 @@ if game.PlaceId == 18157528052 then
 	})
 
 	ADTab:AddButton({
-		Name = "Lighting(Glitched)",
+		Name = "Lightning(Glitched)",
 		Callback = function()
 			local args = {
-				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Lighting")
+				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Lightning")
 			}
 			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
 		end    

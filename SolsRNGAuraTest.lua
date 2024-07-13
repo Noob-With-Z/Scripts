@@ -245,7 +245,7 @@ RATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Bloodlust",
 	Callback = function()
       		local args = {
@@ -254,7 +254,7 @@ ATab:AddButton({
           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
   	end    
 })
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Overture: History",
 	Callback = function()
       		local args = {
@@ -264,7 +264,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Archangel",
 	Callback = function()
       		local args = {
@@ -274,7 +274,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Impeached",
 	Callback = function()
       		local args = {
@@ -284,7 +284,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Overture",
 	Callback = function()
       		local args = {
@@ -294,7 +294,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Starcourge: Radiant",
 	Callback = function()
       		local args = {
@@ -304,7 +304,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Matrix",
 	Callback = function()
       		local args = {
@@ -314,7 +314,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Exotic Apex",
 	Callback = function()
       		local args = {
@@ -324,7 +324,7 @@ ATab:AddButton({
   	end    
 })
 
-ATab:AddButton({
+RATab:AddButton({
 	Name = "RGB Oppression",
 	Callback = function()
       		local args = {
@@ -432,7 +432,7 @@ ADTab:AddButton({
 	Name = "Lighting(Glitched)",
 	Callback = function()
       		local args = {
-          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("")
+          [1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Lighting")
           }
           game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
   	end    

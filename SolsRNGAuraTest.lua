@@ -1,7 +1,6 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Noob-With-Z/Scripts/main/SolsRNGAuraTest.lua"))()
 if game.PlaceId == 18157528052 then
 	local hubversion = "v1.1"
-	local teleported = false
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "rbxassetid://7733954058"})
 
@@ -596,9 +595,3 @@ else
 		end    
 	})
 end
-	local queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
-	if queueteleport then
-	repeat
-	return
-	until teleported == true
-	end

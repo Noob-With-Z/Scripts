@@ -1,5 +1,7 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Noob-With-Z/Scripts/main/SolsRNGAuraTest.lua"))()
 if game.PlaceId == 18157528052 then
+	local hubversion = "v1.1"
+	local teleported = false
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "rbxassetid://7733954058"})
 
@@ -442,7 +444,7 @@ if game.PlaceId == 18157528052 then
 	})
 
 	ADTab:AddButton({
-		Name = "Cheatreal Real",
+		Name = "Cheatreal: Real",
 		Callback = function()
 			local args = {
 				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("CheatrealReal")
@@ -534,6 +536,7 @@ if game.PlaceId == 18157528052 then
 	STab:AddButton({
 		Name = "Server Hop",
 		Callback = function()
+			local queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 			local Player = game.Players.LocalPlayer    
 			local Http = game:GetService("HttpService")
 			local TPS = game:GetService("TeleportService")
@@ -568,7 +571,7 @@ if game.PlaceId == 18157528052 then
 
 	UTab:AddParagraph("v1.1","Cataclysm Now In Paid Auras")
 	
-	print("NoobZ Hub | Sol's RNG Aura Test: Loaded v1.1")
+	print("NoobZ Hub | Sol's RNG Aura Test: Loaded "..hubversion)
 	print("Made With Love By NoobZ")
 	while wait(.5) do
 		plrc:Set("Players: "..#game:GetService("Players"):GetPlayers().."/"..game.Players.MaxPlayers)
@@ -582,6 +585,7 @@ else
 		Icon = "rbxassetid://4483345998",
 		PremiumOnly = false
 	})
+	
 	GTab:AddLabel("ops!")
 	GTab:AddLabel("This script didn't support this game!")
 	GTab:AddLabel("You can teleport to the game supported with this button!")
@@ -592,3 +596,9 @@ else
 		end    
 	})
 end
+	if queueteleport then
+	repeat
+	teleported = true
+	return
+	until teleported == false
+	end

@@ -379,6 +379,16 @@ if game.PlaceId == 18157528052 then
 		end    
 	})
 
+	ADTab:AddButton({
+		Name = "Cataclysm",
+		Callback = function()
+			local args = {
+				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Cataclysm")
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
+		end    
+	})
+
 	-- Unobtainable/Admin Auras --
 
 	local ADTab = Window:MakeTab({
@@ -389,16 +399,6 @@ if game.PlaceId == 18157528052 then
 
 	local Section = ADTab:AddSection({
 		Name = "Equip Unobtainable/Admin Auras"
-	})
-
-	ADTab:AddButton({
-		Name = "Cataclysm",
-		Callback = function()
-			local args = {
-				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Cataclysm")
-			}
-			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
-		end    
 	})
 
 	ADTab:AddButton({

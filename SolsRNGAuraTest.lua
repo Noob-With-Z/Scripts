@@ -559,6 +559,15 @@ if game.PlaceId == 18157528052 then
 			until not Next
 		end
 	})
+
+	local UTab = Window:MakeTab({
+		Name = "Updates",
+		Icon = "rbxassetid://7733984995",
+		PremiumOnly = false
+	})
+
+	UTab:AddParagraph("v1.1","Cataclysm Now In Paid Auras")
+	
 	print("NoobZ Hub | Sol's RNG Aura Test: Loaded v1.1")
 	print("Made With Love By NoobZ")
 	while wait(.5) do

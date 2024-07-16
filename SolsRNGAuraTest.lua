@@ -559,7 +559,8 @@ if game.PlaceId == 18157528052 then
 			until not Next
 		end
 	})
-
+	print("NoobZ Hub | Sol's RNG Aura Test: Loaded v1.1")
+	print("Made With Love By NoobZ")
 	while wait(.5) do
 		plrc:Set("Players: "..#game:GetService("Players"):GetPlayers().."/"..game.Players.MaxPlayers)
 	end

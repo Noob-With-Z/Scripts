@@ -532,10 +532,23 @@ if game.PlaceId == 18157528052 then
 
 	local plrc = STab:AddLabel("Players: 0/?")
 
+		STab:AddButton({
+		Name = "Rejoin Server",
+		Callback = function()
+		-- rejoin script by Shlexware(Infinite Yield FE Admin)
+		if #Players:GetPlayers() <= 1 then
+		Players.LocalPlayer:Kick("\nRejoining...")
+		wait()
+		TeleportService:Teleport(PlaceId, Players.LocalPlayer)
+		else
+		TeleportService:TeleportToPlaceInstance(PlaceId, JobId, Players.LocalPlayer)
+		end
+		end
+	})
+	
 	STab:AddButton({
 		Name = "Server Hop",
 		Callback = function()
-			local queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 			local Player = game.Players.LocalPlayer    
 			local Http = game:GetService("HttpService")
 			local TPS = game:GetService("TeleportService")

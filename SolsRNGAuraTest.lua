@@ -370,7 +370,7 @@ if game.PlaceId == 18157528052 then
 	})
 
 	PATab:AddButton({
-		Name = "Impeach",
+		Name = "Im peach",
 		Callback = function()
 			local args = {
 				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Impeach")

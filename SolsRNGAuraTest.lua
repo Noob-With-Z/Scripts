@@ -536,6 +536,9 @@ if game.PlaceId == 18157528052 then
 		Name = "Rejoin Server",
 		Callback = function()
 		-- rejoin script by Shlexware(Infinite Yield FE Admin)
+		local TeleportService = game:GetService("TeleportService")
+		local Players = game:GetService("Players")
+				
 		if #Players:GetPlayers() <= 1 then
 		Players.LocalPlayer:Kick("\nRejoining...")
 		wait()

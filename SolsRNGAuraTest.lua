@@ -596,9 +596,9 @@ else
 		end    
 	})
 end
+	local queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
 	if queueteleport then
 	repeat
-	teleported = true
 	return
-	until teleported == false
+	until teleported == true
 	end

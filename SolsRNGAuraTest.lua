@@ -379,7 +379,7 @@ if game.PlaceId == 18157528052 then
 		end    
 	})
 
-	PTab:AddButton({
+	PATab:AddButton({
 		Name = "Cataclysm",
 		Callback = function()
 			local args = {

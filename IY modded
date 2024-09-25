@@ -10956,7 +10956,7 @@ addcmd('telekinesis',{'tel'},function(args, speaker)
 	if speaker.Character ~= nil then
     -- Telekinesis tool
     -- Made By MastersMZ (Youtuber)
-		loadstring(game:HttpGet('https://pastebin.com/raw/07GGb4Dk'))
+		loadstring(game:HttpGet('https://pastebin.com/raw/07GGb4Dk'))()
 	end
 end)
 

@@ -1,6 +1,6 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/Noob-With-Z/Scripts/main/SolsRNGAuraTest.lua"))()
 if game.PlaceId == 18157528052 then
-	local hubversion = "v1.1"
+	local hubversion = "v1.11"
 	local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	local Window = OrionLib:MakeWindow({Name = "NoobZ | Sol's RNG Aura Test", HidePremium = false, SaveConfig = true, ConfigFolder = "NoobZ Folder", IntroText = "NoobZ Hub", IntroIcon = "rbxassetid://7733954058"})
 
@@ -381,10 +381,10 @@ if game.PlaceId == 18157528052 then
 	})
 
 	PATab:AddButton({
-		Name = "Cataclysm",
+		Name = "Catalysm",
 		Callback = function()
 			local args = {
-				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Cataclysm")
+				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Catalysm")
 			}
 			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("AuraEquip"):FireServer(unpack(args)) 
 		end    
@@ -433,7 +433,7 @@ if game.PlaceId == 18157528052 then
 	})
 
 	ADTab:AddButton({
-		Name = "Lightning(Glitched)",
+		Name = "Lightning (Glitched)",
 		Callback = function()
 			local args = {
 				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("Lightning")
@@ -453,7 +453,7 @@ if game.PlaceId == 18157528052 then
 	})
 
 	ADTab:AddButton({
-		Name = "smeavemaymns0(Glitched)",
+		Name = "smeavemaymns0 (Glitched)",
 		Callback = function()
 			local args = {
 				[1] = game:GetService("ReplicatedStorage"):WaitForChild("Auras"):WaitForChild("smeavemaymns0")
@@ -584,7 +584,8 @@ if game.PlaceId == 18157528052 then
 		PremiumOnly = false
 	})
 
-	UTab:AddParagraph("v1.1","Cataclysm Now In Paid Auras")
+	UTab:AddParagraph("v1.11","Fixed Some Ortography Misses")
+	UTab:AddParagraph("v1.1","Catalysm Now In Paid Auras")
 	
 	print("NoobZ Hub | Sol's RNG Aura Test: Loaded "..hubversion)
 	print("Made With Love By NoobZ")

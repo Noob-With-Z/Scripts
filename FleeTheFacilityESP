@@ -1,0 +1,173 @@
+-- ESP created by NoobZ(me)
+-- Flee The Facility
+
+local pcs = {}
+local doors = {}
+
+local TableName = "ComputerTable"
+local Door = "ExitDoor"
+
+local Beast = "Hammer"
+
+local folder = Instance.new("Folder")
+folder.Parent = game.CoreGui
+folder.Name = "ESPs_Holder"
+
+function ESP(color, adornee, name)
+    local highlight = Instance.new("Highlight")
+    highlight.Parent = folder
+    highlight.Adornee = adornee
+    highlight.OutlineColor = color
+    highlight.OutlineTransparency = 0
+    highlight.FillTransparency = 1
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    highlight.Name = name
+end
+
+function TextESP(text, textcolor, adornee, name)
+    local billboard = Instance.new("BillboardGui")
+    billboard.Parent = folder
+    billboard.Adornee = adornee
+    billboard.Name = name
+    billboard.AlwaysOnTop = true
+    billboard.MaxDistance = 1000
+    billboard.Size = UDim2.new(0, 100, 0, 25)
+    
+    local label = Instance.new("TextLabel")
+    label.Parent = billboard
+    label.Text = text
+    label.TextColor3 = textcolor
+    label.Name = "TextLabelESP_Part_billboard"
+    label.Size = UDim2.new(1, 0 ,1, 0)
+    label.BackgroundTransparency = 1
+    label.TextSize = 10
+end
+
+function DestroyESP(typeofesp, name)
+    if typeofesp == "Normal" then
+        
+        for i, v in pairs(folder:GetDescendants()) do
+            if v:IsA("Highlight") then
+                if v.Name == name then
+                    v:Destroy()
+                end
+            end
+        end
+        
+    elseif typeofesp == "Text" then
+        
+        for i, v in pairs(folder:GetDescendants()) do
+            if v:IsA("BillboardGui") then
+                if v.Name == name then
+                    v:Destroy()
+                end
+            end
+        end
+        
+    elseif typeofesp == "Both" then
+        for i, v in pairs(folder:GetDescendants()) do
+            if v:IsA("Highlight") or v:IsA("BillboardGui") then
+                if v.Name == name then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+end
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Flee The Facility",
+    SubTitle = "by NoobZ",
+    TabWidth = 50,
+    Size = UDim2.fromOffset(480, 350),
+    Acrylic = false,
+    Theme = "Darker",
+    MinimizeKey = Enum.KeyCode.H
+})
+
+Main = Window:AddTab({ Title = "Main", Icon = "" })
+
+local Options = Fluent.Options
+
+local Toggle = Main:AddToggle("CE", {Title = "Computer Esp", Default = false })
+
+local espcomp = false
+
+Toggle:OnChanged(function(Value)
+    espcomp = Value
+    task.spawn(function()
+        while task.wait(.5) do
+            if espcomp == true then
+                
+                for i, v in pairs(workspace:GetDescendants()) do
+                    if v.Name == TableName and v:IsA("Model") and not table.find(pcs, v) then
+                        ESP(Color3.fromRGB(0, 255, 0), v, "Computer")
+                        TextESP("Computer", Color3.fromRGB(0, 255, 0), v:FindFirstChild("Screen"), "Computer")
+                        table.insert(pcs, v)
+                    end
+                end
+                
+            else
+                table.clear(pcs)
+                DestroyESP("Both", "Computer")
+                break
+            end
+        end
+    end)
+end)
+
+local Toggle2 = Main:AddToggle("EE", {Title = "Exits Esp", Default = false })
+
+local espexit = false
+
+Toggle2:OnChanged(function(Value)
+    espexit = Value
+    task.spawn(function()
+        while task.wait(.5) do
+            if espexit == true then
+
+                for i, v in pairs(workspace:GetDescendants()) do
+                    if v.Name == Door and not table.find(doors, v) then
+                        ESP(Color3.fromRGB(255, 255, 0), v , "Exit")
+                        TextESP("Exit Door", Color3.fromRGB(255, 255, 0), v:FindFirstChild("Door"):FindFirstChild("Spinner"):FindFirstChild("Wheel"), "Exit")
+                        table.insert(doors, v)
+                    end
+                end
+
+            else
+                table.clear(doors)
+                DestroyESP("Both", "Exit")
+                break
+            end
+        end
+    end)
+end)
+
+local Toggle2 = Main:AddToggle("BE", {Title = "Beast Esp", Default = false })
+
+local beastesp = false
+
+Toggle2:OnChanged(function(Value)
+    beastesp = Value
+    task.spawn(function()
+        while task.wait(.5) do
+            if beastesp == true then
+                
+                for i, v in pairs(workspace:GetDescendants()) do
+                    if v:IsA("Model") and game:GetService("Players"):GetPlayerFromCharacter(v) and not folder:FindFirstChild("Beast") then
+                        if v:FindFirstChild("Hammer") then
+                            ESP(Color3.fromRGB(255, 0, 0), v, "Beast")
+                            TextESP("Beast", Color3.fromRGB(255, 0, 0), v, "Beast")
+                        end
+                    end
+                end
+
+            else
+                DestroyESP("Both", "Beast")
+                break
+            end
+        end
+    end)
+end)

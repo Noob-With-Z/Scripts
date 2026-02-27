@@ -1,11 +1,5 @@
-# Warning
-Every Script Here Is Open-Source Feel Free To Use The Code
-
-# Misc.
-If You Wish Make A Video About Any Script Mine, Please Let The Credits For Me Using:
-```
-https://github.com/Noob-With-Z
-```
+# Open-Source
+Well... Open-Source. lol.
 
 # About The Scripts
-Scripts Here Can Be Mine Or No, If Is Not Mine, The Probability To Never Update Is Like 90% Or Idk 🤣
+If it is not mine, i'll insert the credits at the top of the raw
